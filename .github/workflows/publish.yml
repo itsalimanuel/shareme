@@ -26,5 +26,5 @@ jobs:
         with:
           publish: pnpm release
         env:
-          GITHUB_TOKEN: ${{secrets.KEY}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_KEY}}
           PUBLISH: ${{secrets.PUBLISH}}
