@@ -8,14 +8,14 @@
   "type": "module",
   "scripts": {
     "dev": "node server",
-    "build": "npm run build:client && npm run build:server",
+    "build": "pnpm run build:client && pnpm run build:server",
     "vitest": "vitest run",
     "test:ts": "tsc",
     "build:ts": "tsup src/shareme-vue.ts --format cjs,esm --dts",
     "build:client": "vite build --ssrManifest --outDir dist/client",
     "build:server": "vite build --ssr src/entry-server.ts --outDir dist/server",
-    "ci": "bun i && bun run test:ts && bun run build:ts",
-    "release": "bun run test:ts && bun run build:ts && changesets publish",
+    "ci": "pnpm i && pnpm run test:ts && pnpm run build:ts",
+    "release": "pnpm run test:ts && pnpm run build:ts && changesets publish",
     "preview": "cross-env NODE_ENV=production node server"
   },
   "dependencies": {
