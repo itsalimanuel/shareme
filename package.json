@@ -1,0 +1,38 @@
+{
+  "name": "@shareme/vue",
+  "private": false,
+  "version": "0.0.1-beta",
+  "main": "./dist/index.js",
+  "module": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "node server",
+    "build": "npm run build:client && npm run build:server",
+    "vitest": "vitest run",
+    "build:ts": "tsup src/shareme-vue.ts --format cjs,esm --dts",
+    "build:client": "vite build --ssrManifest --outDir dist/client",
+    "build:server": "vite build --ssr src/entry-server.ts --outDir dist/server",
+    "ci": "bun i && bun run test:ts && bun run build:ts",
+    "release": "bun run test:ts && bun run build:ts && changesets publish",
+    "preview": "cross-env NODE_ENV=production node server"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.18.2",
+    "sirv": "^2.0.3",
+    "vitest": "^0.34.6",
+    "vue": "^3.3.8"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.9.0",
+    "@changesets/cli": "^2.26.2",
+    "@vitejs/plugin-vue": "^4.5.0",
+    "cross-env": "^7.0.3",
+    "typescript": "^5.2.2",
+    "tsup": "^8.0.1",
+    "vite": "^5.0.0",
+    "vue-tsc": "^1.8.22"
+  }
+}
