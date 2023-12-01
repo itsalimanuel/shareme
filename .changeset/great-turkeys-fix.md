@@ -1,5 +1,0 @@
----
-"@shareme/vue": patch
----
-
-Init
