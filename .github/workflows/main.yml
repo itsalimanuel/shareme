@@ -9,12 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: oven-sh/setup-bun@v1
+      - uses: pnpm/action-setup@v2
         with:
-          bun-version: latest
+          version: latest
       - uses: actions/setup-node@v4.0.0
         with:
           node-version: 20.x
+          cache: "pnpm"
 
       - run: bun install --force
       - run: bun run ci
