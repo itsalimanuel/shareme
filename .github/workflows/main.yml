@@ -17,5 +17,5 @@ jobs:
           node-version: 20.x
           cache: "pnpm"
 
-      - run: bun install --force
-      - run: bun run ci
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run ci

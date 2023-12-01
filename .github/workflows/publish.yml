@@ -19,12 +19,12 @@ jobs:
           node-version: 20.x
           cache: "pnpm"
 
-      - run: bun install --force
+      - run: pnpm install --frozen-lockfile
       - name: Create Release Pull Request or Publish
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: bun release
+          publish: pnpm release
         env:
           GITHUB_TOKEN: ${{secrets.KEY}}
           PUBLISH: ${{secrets.PUBLISH}}
