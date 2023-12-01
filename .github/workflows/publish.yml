@@ -1,0 +1,29 @@
+name: Publish
+on:
+  push:
+    branches:
+      - "main"
+
+concurrency: ${{github.workflow}}-${{github.ref}}
+
+jobs:
+  Publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+      - uses: actions/setup-node@v4.0.0
+        with:
+          node-version: 20.x
+
+      - run: bun install --force
+      - name: Create Release Pull Request or Publish
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: bun release
+        env:
+          GITHUB_TOKEN: ${{secrets.KEY}}
+          PUBLISH: ${{secrets.PUBLISH}}
