@@ -10,6 +10,7 @@
     "dev": "node server",
     "build": "npm run build:client && npm run build:server",
     "vitest": "vitest run",
+    "test:ts": "tsc",
     "build:ts": "tsup src/shareme-vue.ts --format cjs,esm --dts",
     "build:client": "vite build --ssrManifest --outDir dist/client",
     "build:server": "vite build --ssr src/entry-server.ts --outDir dist/server",
