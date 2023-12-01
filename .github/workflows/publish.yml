@@ -17,15 +17,13 @@ jobs:
       - uses: actions/setup-node@v4.0.0
         with:
           node-version: 20.x
-          cache: "pnpm"
-      - run: pnpm -v
-      - run: node -v
+
       - run: pnpm install --frozen-lockfile
       - name: Create Release Pull Request or Publish
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: pnpm run release
+          publish: pnpm release
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN }}
           PUBLISH: ${{secrets.PUBLISH}}
