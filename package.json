@@ -15,7 +15,7 @@
     "build:client": "vite build --ssrManifest --outDir dist/client",
     "build:server": "vite build --ssr src/entry-server.ts --outDir dist/server",
     "ci": "pnpm i && pnpm run test:ts && pnpm run build:ts",
-    "release": "pnpm run test:ts && pnpm run build:ts && changesets publish",
+    "release": "pnpm run test:ts && pnpm run build:ts && changese publish",
     "preview": "cross-env NODE_ENV=production node server"
   },
   "dependencies": {
